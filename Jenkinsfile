@@ -1,7 +1,6 @@
 node {
     def app
-   
-  
+
     stage('Clone repository') {
       
 
@@ -21,20 +20,10 @@ node {
         }
     }
 
-    
-     stage('Docker Login') {
-          DOCKERHUB_CREDS=credentials('DockerHub')
-         
-     sh 'echo $DOCKERHUB_CREDS_PSW | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
-     }
-    
-    stage('Push image') {  
-        
+    stage('Push image') {
         // @note 'dockerhub' below is my Jenkins credentials keyword to login to DockerHub
-         //  docker.withRegistry('https://hub.docker.com/repository/docker', 'DockerHub') {
-        //    app.push("${env.BUILD_NUMBER}")
-               
-           app.push('docker push ltartsmusic/gitopsdockerid:$BUILD_NUMBER')     
+        docker.withRegistry('https://hub.docker.com', 'DockerHub') {
+            app.push("ltartsmusic/gitopsdockerid:${env.BUILD_NUMBER}")
         }
     }
     
