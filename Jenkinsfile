@@ -1,6 +1,6 @@
 node {
     def app
-
+    agent any
    environment{
         DOCKERHUB_CREDS=credentials('DockerHub')
     }
