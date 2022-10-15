@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("ltartsmusic/gitopsdockerid")
+       app = docker.build("gitops/testing")
     }
 
     stage('Test image') {
@@ -22,8 +22,8 @@ node {
 
     stage('Push image') {
         // @note 'dockerhub' below is my Jenkins credentials keyword to login to DockerHub
-        docker.withRegistry('https://hub.docker.com/repository/docker/', 'DockerHub') {
-            app.push("ltartsmusic/gitopsdockerid:${env.BUILD_NUMBER}")
+       docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
+            app.push("${env.BUILD_NUMBER}
         }
     }
     
