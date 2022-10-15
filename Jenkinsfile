@@ -23,7 +23,7 @@ node {
     stage('Push image') {
         // @note 'dockerhub' below is my Jenkins credentials keyword to login to DockerHub
        docker.withRegistry('https://registry.hub.docker.com', 'DockerHub') {
-            app.push("${env.BUILD_NUMBER}
+            app.push("${env.BUILD_NUMBER}")
         }
     }
     
