@@ -22,7 +22,7 @@ node {
 
     stage('Push image') {
         // @note 'dockerhub' below is my Jenkins credentials keyword to login to DockerHub
-        docker.withRegistry('https://hub.docker.com', 'DockerHub') {
+        docker.withRegistry('https://hub.docker.com/repository/docker/', 'DockerHub') {
             app.push("ltartsmusic/gitopsdockerid:${env.BUILD_NUMBER}")
         }
     }
