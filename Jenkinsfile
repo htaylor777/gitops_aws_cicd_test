@@ -13,7 +13,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh 'docker build -t raj80dockerid/jenkinstest ./pushdockerimage/' (this will use the tag latest)
-		sh 'docker build -t ltartsmusic/gitopstesting:$BUILD_NUMBER ./gitops_aws_cicd_test/'  
+		sh 'docker build -t ltartsmusic/lt-jenkins-pipeline1:$BUILD_NUMBER ./pushimage/'  
             }
         }
         stage('Docker Login') {
@@ -26,13 +26,24 @@ pipeline {
             steps {
 		//sh 'docker push raj80dockerid/jenkinstest' (this will use the tag latest)    
             
-                sh 'docker push ltartsmusic/gitopstesting:$BUILD_NUMBER'
+                sh 'docker push ltartsmusic/lt-jenkins-pipeline1:$BUILD_NUMBER'
                 }
             }
-    
-    stage('Trigger ManifestUpdate') {
-                echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+
+	          stage('Trigger Downstream Job') {
+            steps {
+		
+		    build  job: 'downstreamjob'
+               
+                }
+            }    
+	    
+	    
         }
-}
-}
+    post {
+		always {
+			sh 'docker logout'
+		}
+	 }
+    }
+
