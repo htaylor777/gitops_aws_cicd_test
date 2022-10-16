@@ -9,10 +9,8 @@ node {
 
     stage('Build image') {
   
-       //app = docker.build("gitops/testing")
-        app.inside {
-            sh 'docker build -t ltartsmusic/gitopsTest:$BUILD_NUMBER' 
-       }
+       app = docker.build("gitops/testing")
+       
     }
     
     stage('Test image') {
