@@ -32,8 +32,8 @@ pipeline {
 
 	          stage('Trigger Downstream Job') {
             steps {
-		
-		    build  job: 'downstreamjob'
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
                
                 }
             }    
