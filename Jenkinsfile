@@ -13,7 +13,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh 'docker build -t raj80dockerid/jenkinstest ./pushdockerimage/' (this will use the tag latest)
-		sh 'docker build -t ltartsmusic/lt-jenkins-pipeline1:$BUILD_NUMBER ./pushimage/'  
+		sh 'docker build -t ltartsmusic/lt-jenkins-pipeline1:$BUILD_NUMBER ./gitops_aws_cicd_test/'  
             }
         }
         stage('Docker Login') {
