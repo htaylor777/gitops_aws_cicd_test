@@ -1,8 +1,9 @@
 from flask import Flask, render_template
 import os
+import requests
+import configparser
 
 app = Flask(__name__)
-
 
 @app.route('/')
 def home():
@@ -12,10 +13,9 @@ def home():
 def about():
     return render_template("about.html")
     
-@app.route("/about)
-def about():
-    return render_template("/demo1/about.html")
-
+@app.route("/larry")
+def larry():
+    return "Hello, LT!"
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
