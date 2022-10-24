@@ -8,4 +8,12 @@ def index():
 
 @app.route('/services')
 def services():
-    return render_template('services.html')    
+    return render_template('services.html') 
+
+@app.route('/home')
+def services():
+    return render_template('index.html')
+    
+@app.route('/about')
+def services():
+    return render_template('about.html')      
