@@ -10,5 +10,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('contact.html');   
+    return render_template('contact.html') 
+
+@app.route('/hello')
+def hello_world():
+    return 'Please subscribe, like, and comment on this video, TY!!!'
 
