@@ -11,9 +11,9 @@ def services():
     return render_template('services.html') 
 
 @app.route('/home')
-def services():
+def home():
     return render_template('index.html')
     
 @app.route('/about')
-def services():
+def about():
     return render_template('about.html')      
