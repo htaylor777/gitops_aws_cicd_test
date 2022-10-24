@@ -1,17 +1,16 @@
 # __init__.py
 import time
 
-from flask import Flask, g, render_template, request
+from flask import Flask 
+import render_template
+import request
 import arrow
 import requests
-
-
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
-def index():
-    return render_template('index.html')
-
+@app.route('/')
+def this_index():
+    return render_template('contact.html')
 return app
 
 @app.route('/hello')
