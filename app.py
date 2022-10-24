@@ -1,9 +1,8 @@
-from flask import render_template
+from flask import Flask, render_template
+
+app = Flask(__name__)
 
 
 @app.route('/')
-@app.route('/index')
 def index():
-    users = [ 'Rosalia','Adrianna','Victoria' ]
-    return render_template('index.html', title='Welcome', members=users)
-
+    return render_template('index.html')
