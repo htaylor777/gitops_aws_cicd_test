@@ -1,10 +1,14 @@
-import os
-from flask import Flask, render_template
+# __init__.py
+import time
+
+from flask import Flask, g, render_template, request
+import arrow
+import requests
 
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("about.html", message="Hello Flask!");   
+    return render_template('contact.html');   
 
