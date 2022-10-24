@@ -8,9 +8,11 @@ import requests
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
-    return render_template('contact.html') 
+    return render_template('index.html')
+
+return app
 
 @app.route('/hello')
 def hello_world():
