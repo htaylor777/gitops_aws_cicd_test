@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("ltartsmusic/gitopstest")
+       app = docker.build("ltartsmusic/awsgitopswebtest")
     }
 
     stage('Test image') {
