@@ -3,7 +3,6 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 # triggers implemented
-# here we go again builds
 @app.route('/')
 def index():
     return render_template('index.html')
